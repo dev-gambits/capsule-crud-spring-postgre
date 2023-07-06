@@ -1,10 +1,9 @@
 package cl.sideralti.capsulespringpostgre.repository;
 
-import cl.sideralti.capsulespringpostgre.entity.Persona;
+import cl.sideralti.capsulespringpostgre.entity.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonaRepository extends JpaRepository<Persona, Long> {
-
+public interface ProductoRepository extends JpaRepository<Producto, Long> {
 }

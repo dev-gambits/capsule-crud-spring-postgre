@@ -14,9 +14,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/persona")
 public class PersonaController {
-
-    @Autowired
     private PersonaService personaService;
+
+    public PersonaController(PersonaService personaService) {
+        this.personaService = personaService;
+    }
 
     @PostMapping("/guardar")
     private ResponseEntity<Persona>  guardar(@RequestBody Persona persona) {
@@ -34,12 +36,12 @@ public class PersonaController {
     }
 
     @DeleteMapping("/eliminar")
-    private ResponseEntity<Void>  eliminarPersonas(@RequestBody Persona persona) {
+    private ResponseEntity<Void> eliminarPersonas(@RequestBody Persona persona) {
         personaService.deletePersona(persona);
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     private ResponseEntity<Optional<Persona>> buscarPorIdPersonas(@PathVariable("id") Long id) {
         return ResponseEntity.ok(personaService.findByIdPersona(id));
     }
